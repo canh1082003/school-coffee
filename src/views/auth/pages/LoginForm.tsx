@@ -5,6 +5,8 @@ import Input from "../../components/input";
 import Social from "../components/Social";
 import AnimationButton from "../../components/button/AnimationButton";
 import { useLogin } from "../../../hooks/auth/use/useLogin";
+import { EyeIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
 type Props = { setIsLogin: (value: boolean) => void };
 
@@ -13,6 +15,10 @@ export interface LoginFormData {
   password: string;
 }
 const LoginForm = ({ setIsLogin }: Props) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const show = () => {
+    setShowPassword(!showPassword);
+  };
   const {
     register,
     handleSubmit,
@@ -48,17 +54,23 @@ const LoginForm = ({ setIsLogin }: Props) => {
           register={register}
           errorMessage={errors.email?.message}
         />
+        <div className="relative  flex">
 
-        <Input
-          name="password"
-          type="password"
-          placeholder="password"
-          autoComplete="on"
-          rule={rule.password}
-          register={register}
-          errorMessage={errors.password?.message}
-        />
-
+          <Input
+            name="password"
+            style="flex-1"
+            type={showPassword ? "text" : "password"}
+            placeholder="password"
+            autoComplete="on"
+            rule={rule.password}
+            register={register}
+            errorMessage={errors.password?.message}
+          />
+          <EyeIcon
+            className="absolute top-1/4 right-4 w-6 h-6 transform -translate-y-1/2 cursor-pointer"
+            onClick={show}
+          />
+        </div>
         <Link
           to={"/forgot-password"}
           className="  text-sm underline hover:underline-offset-4"

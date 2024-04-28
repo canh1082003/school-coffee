@@ -1,167 +1,114 @@
-import { useState, useEffect } from "react";
-import { MagnifyingGlassIcon, HeartIcon } from "@heroicons/react/24/outline";
-import main from "../../img/main/main.jpg";
+
+import goicaphe from "../../img/main/goicaphe.png";
+import tuicaphe from "../../img/main/tuicaphe.png";
+import cuahangmain from "../../img/main/cuahangmain.png";
+import cuahangphu from "../../img/main/cuahangphu.png";
+import caphesua from "../../img/product/caphesua.webp";
+import caphesuasaigon from "../../img/product/caphesuasaigon.webp";
+import caphemuoi from "../../img/product/caphemuoi.webp";
 import { motion } from 'framer-motion'
-import { Link, Outlet } from 'react-router-dom'
-import api from "../../api/Api";
-import { formatPrice } from "../../helpers/formatprice";
-// import posster from "../../img/main/postter.jpg"
-type Product = {
-  id: number,
-  img: string,
-  name: string,
-  price: number,
-  categoryId: number,
-}
-type Category = {
-  id: number,
-  name: string,
-}
-
+import { Link } from 'react-router-dom'
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [categorys, setCategorys] = useState<Category[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [activeCategoryId, setActiveCategoryId] = useState(0);
-  const productsFilter = products?.filter((product => {
-    return activeCategoryId == 0 ? true : activeCategoryId == product.categoryId
-  }));
-  console.log(activeCategoryId)
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const responseProduct = await api.get('/product/all');
-        setProducts(responseProduct.data.data);
-        setIsLoading(true)
 
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-
-    };
-    fetchProducts();
-    setIsLoading(false)
-  }, []);
-
-  useEffect(() => {
-    const fetchCategory = async () => {
-      try {
-        const responseCategory = await api.get('/product/category');
-        setCategorys(responseCategory.data.data);
-        // setIsLoading(true)
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-
-    };
-    fetchCategory();
-    // setIsLoading(false)
-  }, []);
-
-  const renderWelcomeImage = () => {
+  const renderWelcome = () => {
     return (
-      <div className='relative'>
-        <div>
-          <img src={main} alt="" className=' w-full h-[600px] object-center' />
+      <div className='bg-mainColor-main px-20 pt-28'>
+        <div className="flex">
+
+          <div className=" flex-1 w-60%">
+            <h1 className="text-mainColor-text font-bold text-8xl mb-10"> Han Coffee</h1>
+            <p className="font-sans text-white text-3xl mb-10">Chào mừng bạn đến với HAN Coffee, nơi kết nối đam mê cà phê và không gian đẳng cấp.</p>
+            <Link to='/sanpham'>
+              <button className="text-white text-3xl font-bold bg-orange-700  rounded-lg p-2 hover:underline ">Mua Ngay</button>
+            </Link>
+          </div>
+          <div className=' w-[40%]'>
+            <div className="flex">
+              <p className="bg-orange-500 w-[400px] h-[400px] mb-[82px] ml-16 rounded-full relative"></p>
+              <img src={goicaphe} alt="" className="absolute ml-10 " />
+            </div>
+          </div>
         </div>
-        <div className='absolute  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-slate-50 text-2xl font-bold '>
-          <p className='text-center mr-5 text-3xl tracking-wide'>The Local Han | 362 Nguyễn Tất Thành</p>
-          <p>Địa Chỉ : 362 Nguyễn Tất Thành, Thành Phố Hội An , Tỉnh Quảng Nam</p>
-        </div>
+        <p className="text-center font-bold text-white text-3xl mb-5">@HanCoffee 2023-2024</p>
       </div>
 
     )
   }
-  const renderTitleProductsAndFind = () => {
+  const renderIntroduce = () => {
     return (
-      <>
-        <div className=' flex-1 flex mt-10'>
-          <div >
-            <div
-              onClick={() => {
-                setActiveCategoryId(0)
-              }}
-              className={`whitespace-nowrap  px-5 py-3  rounded-md text-center text-xl mx-6 hover:bg-cyan-950 hover:text-yellow-500 ${activeCategoryId == 0 ? 'bg-cyan-950 text-yellow-500' : 'text-cyan-950 bg-yellow-500'}`}
-            >
-              <span className=" ">Tất Cả</span>
-            </div>
-          </div>
-          {categorys.map(category => (
-
-            <div key={category.id} >
-              <div
-                onClick={() => {
-                  setActiveCategoryId(category.id)
-                }}
-                className={`whitespace-nowrap  px-5 py-3  rounded-md text-center text-xl mx-6 hover:bg-cyan-950 hover:text-yellow-500 ${activeCategoryId === category.id ? 'bg-cyan-950 text-yellow-500' : 'text-cyan-950 bg-yellow-500'}`}
-              >
-                <span className=" ">{category.name}</span>
-              </div>
-            </div>
-
-          ))}
-        </div>
-        <div className="relative ">
-          <div className="flex ">
-            <input
-              id="search"
-              type="text"
-              placeholder="Tìm Sản Phẩm"
-              className=" mt-7 my-10 mr-[30px]  px-5 py-3 border rounded-md border-gray-500"
-            />
-            <div className="absolute w-6 h-6 right-[50px] mt-[41px]">
-              <MagnifyingGlassIcon />
-            </div>
-          </div>
-        </div>
-      </>
+      <div className="bg-mainColor-colorsCustom  text-center px-20">
+        <h3 className="font-bold text-5xl text-white pt-10 mb-10">Kết Nối Với Chúng Tôi</h3>
+        <p className="text-white text-3xl leading-relaxed ">Chào mừng bạn đến với quán cà phê độc đáo và ấn tượng - HAN Coffee! Chúng tôi tự hào là địa điểm mang đến không gian thoải mái và trải nghiệm cà phê độc đáo tại trung tâm thành phố. Với tên thương hiệu "HAN," chúng tôi kết hợp không khí ấm cúng và phong cách hiện đại, tạo nên một không gian đặc biệt, nơi khách hàng có thể thư giãn và tận hưởng hương vị cà phê tinh tế.</p>
+      </div>
     )
   }
-  const renderProducts = () => {
+  const renderImg = () => {
     return (
-      <div className="col-span-3 px-20">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-          {productsFilter?.map(product => (
-            <div className="col-span-1" key={product.id}>
-              <Link to={`/product/${product.id}`}>
-                <div className="bg-white shadow rounded-sm hover:translate-y-1 hover:shadow-md duration-75 transition-transform">
-                  <div className="">
-                    <img
-                      src={product.img}
-                      alt={product.name}
-                      className="top-0 left-0 w-full h-full"
-                    />
-                  </div>
-                  <div className="p-2 overflow-hidden mx-3 my-5">
-                    <div className="flex items-center justify-between">
-                      <p className="font-text text-2xl font-bold text-orange-700 uppercase lg:text-lg text-md line-clamp-2">
-                        {product.name}
-                      </p>
-                      <HeartIcon className="w-6 h-6 hover:fill-mainColor-icon hover:stroke-none" />
-                    </div>
-                    <p className="mt-3 opacity-75 text-base lg:text-md font-bold">{formatPrice(product.price)}</p>
-                  </div>
-                </div>
-              </Link>
+      <img src={tuicaphe} alt="" className="w-full" />
+    )
+  }
+  const renderProduct = () => {
+    return (
+      <div className="px-20 py-28">
+        <h3 className="text-mainColor-text font-bold text-5xl">Sản Phẩm Mới</h3>
+        <div className="flex mt-10">
+          <div className="flex-1 bg-mainColor-colorsCustom rounded-lg p-4 mx-2">
+            <div className="">
+              <img className="rounded-lg" src={caphesua} alt="" />
             </div>
-          ))}
+            <div className="text-center text-mainColor-text font-bold text-3xl">
+              <p className="my-5">Cà Phê Sữa</p>
+              <p>45.000đ ~ 60.000đ</p>
+            </div>
+          </div>
+          <div className="flex-1 bg-mainColor-colorsCustom rounded-lg p-4 mx-2">
+            <div className="">
+              <img className="rounded-lg" src={caphesuasaigon} alt="" />
+            </div>
+            <div className="text-center text-mainColor-text font-bold text-3xl">
+              <p className="my-5">Cà Phê Sài Gòn</p>
+              <p>65.000đ ~ 80.000đ</p>
+            </div>
+          </div>
+          <div className="flex-1 bg-mainColor-colorsCustom rounded-lg p-4 mx-2">
+            <div className="">
+              <img className="rounded-lg" src={caphemuoi} alt="" />
+            </div>
+            <div className="text-center text-mainColor-text font-bold text-3xl">
+              <p className="my-5">Cà Phê Muối</p>
+              <p>55.000đ ~ 70.000đ</p>
+            </div>
+          </div>
+
+        </div>
+        <Link to='/sanpham'>
+          <button className="bg-mainColor-button text-mainColor-text font-bold text-4xl w-full rounded-lg mt-10 mb-[200px] py-3 hover:bg-mainColor-colorsCustom">Xem Thêm</button>
+        </Link>
+        <div className="flex">
+          <div className="flex-1 w-[60%] ml-20">
+            <img src={cuahangmain} alt="" />
+            <div className="border-b border-orange-500 mt-10"></div>
+          </div>
+          <div className=" flex-1">
+            <p className="text-mainColor-text font-bold text-7xl text-center mb-5">Cửa Hàng</p>
+            <img src={cuahangphu} alt="" />
+            <div className="border-b border-orange-500 mt-10"></div>
+
+          </div>
         </div>
       </div>
-
     )
   }
   return (
     <motion.div>
 
-      {
-        isLoading ? (<div className='mt-[100px] bg-slate-200' >
-          {renderWelcomeImage()}
-          < div className="flex mt-10 mx-20" >
-            {renderTitleProductsAndFind()}
-          </div>
-          <Outlet />
-          {renderProducts()}
-        </div >) : "loading..."}
+
+      <div className='mt-[100px] bg-mainColor-main border-b border-orange-500' >
+        {renderWelcome()}
+        {renderIntroduce()}
+        {renderImg()}
+        {renderProduct()}
+      </div >
     </motion.div>
 
 

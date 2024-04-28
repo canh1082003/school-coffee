@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-
+import { EyeIcon } from "@heroicons/react/24/outline";
 import { getRule } from "../../../utils/rules";
 import Input from "../../components/input";
 import { useRegister } from "../../../hooks/auth/use/useRegsiter";
 import AnimationButton from "../../components/button/AnimationButton";
+import { useState } from "react";
 type Props = { setIsLogin: (value: boolean) => void };
-
 export interface RegisterFormData {
   email: string;
   password: string;
@@ -15,6 +15,10 @@ export interface RegisterFormData {
 }
 
 const RegisterForm = ({ setIsLogin }: Props) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const {
     register,
     handleSubmit,
@@ -69,15 +73,24 @@ const RegisterForm = ({ setIsLogin }: Props) => {
           register={register}
           errorMessage={errors.email?.message}
         />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Password"
-          autoComplete="on"
-          rule={rule.password}
-          register={register}
-          errorMessage={errors.password?.message}
-        />
+        <div className="relative  flex">
+
+          <Input
+            name="password"
+            style="flex-1"
+            type={showPassword ? "text" : "password"}
+            // type="password"
+            placeholder="Password"
+            autoComplete="on"
+            rule={rule.password}
+            register={register}
+            errorMessage={errors.password?.message}
+          />
+          <EyeIcon
+            className="absolute top-1/4 right-4 w-6 h-6 transform -translate-y-1/2 cursor-pointer"
+            onClick={togglePasswordVisibility}
+          />
+        </div>
         <div>
           <Input
             name="confirmPassword"

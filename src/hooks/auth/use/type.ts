@@ -8,6 +8,7 @@ export type UserInfo = {
   role: string;
   userId: string;
   email: string;
+  isVerifyEmail: string;
 };
 export type LoginData = {
   data: UserInfo;

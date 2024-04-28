@@ -101,9 +101,9 @@ export default function ListUser() {
                     <p className='font-bold'>Role</p>
                     <input type="text" name="role" className="w-[700px] border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" />
                     <p className='font-bold'>Password</p>
-                    <input type="text" name="password" className="w-[700px] border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" />
+                    <input type="password" name="password" className="w-[700px] border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" />
                     <p className='font-bold'>ConfirmPassword</p>
-                    <input type="text" name="confirmPassword" className="w-[700px] border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" />
+                    <input type="password" name="confirmPassword" className="w-[700px] border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" />
                   </div>
                   <div className="flex justify-center items-center">
                     <button type="submit" className='font-bold rounded-md p-3 mt-3 text-gray-50 bg-blue-700 hover:bg-blue-800'>Add User</button>

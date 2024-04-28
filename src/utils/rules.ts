@@ -7,9 +7,9 @@ type Rules = {
     | 'password'
     | 'confirmPassword'
     | 'fullName'
-    | 'address'
     | 'firstName'
-    | 'lastName']: RegisterOptions;
+    | 'lastName'
+    | 'verifyEmail']: RegisterOptions;
 };
 
 export const getRule = (): Rules => ({
@@ -17,6 +17,9 @@ export const getRule = (): Rules => ({
     required: { value: true, message: 'obliges' }
   },
   lastName: {
+    required: { value: true, message: 'obliges' }
+  },
+  verifyEmail: {
     required: { value: true, message: 'obliges' }
   },
   email: {
@@ -39,16 +42,13 @@ export const getRule = (): Rules => ({
     },
     minLength: {
       value: 5,
-      message: 'Length from 6- 160 characters'
+      message: 'Length from 6- 10 characters'
     }
   },
   confirmPassword: {
     required: { value: true, message: 'This field is required' }
   },
   fullName: {
-    required: { value: true, message: 'bắt buộc' }
-  },
-  address: {
     required: { value: true, message: 'bắt buộc' }
   }
 });

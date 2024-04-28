@@ -1,8 +1,8 @@
 export const HeaderRoutes = [
   {
     id: 1,
-    title: 'Đặt Hàng',
-    path: '/dathang'
+    title: 'Trang Chủ',
+    path: '/home'
   },
   {
     id: 2,
@@ -13,10 +13,5 @@ export const HeaderRoutes = [
     id: 3,
     title: 'Bài Viết',
     path: '/baiviet'
-  },
-  {
-    id: 4,
-    title: 'Liên Hệ',
-    path: '/lienhe'
   }
 ];

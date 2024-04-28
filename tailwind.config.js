@@ -6,14 +6,16 @@ export default {
     extend: {
       colors: {
         mainColor: {
-          main: '#ff9900',
-          text: '#ffcc6e',
-          icon: 'red'
+          main: '#4A6A67',
+          text: '#ED7A2E',
+          icon: 'red',
+          colorsCustom: '#303f3d',
+          button: '#302D2D'
         }
       },
       fontFamily: {
-        body: ['Poppins'],
-        text: ['Inknut']
+        body: ['Inter', 'sans-serif'],
+        text: ['Inter', 'sans-serif']
       }
     }
   },

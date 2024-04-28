@@ -3,9 +3,9 @@ import { GlobeAltIcon, MapIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 export default function footer() {
   return (
-    <>
-      <div className="border border-gray"></div>
-      <div className="h-[100px]  pt-3">
+    <div className='bg-mainColor-main text-white border-t border-orange-500'>
+      <div className="h-[200px]  pt-10 ">
+        <p className='text-center font-bold  text-5xl mb-10'>Liên Hệ Chúng Tôi</p>
         <div className="  md:mx-5 lg:mx-32 grid grid-cols-3   ">
           <div>
             <Link to="/map" className="flex space-x-3 ">
@@ -46,6 +46,6 @@ export default function footer() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
